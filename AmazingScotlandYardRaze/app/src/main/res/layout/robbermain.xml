@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/RMtextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="write Police player in field below" />
+
+    <EditText
+        android:id="@+id/RM_PolicePlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player name" />
+
+    <TextView
+        android:id="@+id/RMtextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click save when done" />
+
+    <Button
+        android:id="@+id/SendPuzzleButton"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:text="Save settings" />
+
+
 
 </LinearLayout>

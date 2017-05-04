@@ -10,45 +10,38 @@
 
 
     <TextView
-        android:id="@+id/NGtextView1"
-        android:layout_width="wrap_content"
+        android:id="@+id/OGtextView1"
+        android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginTop="36dp"
         android:text="Welcome to AmasingScotlandYardRaze!"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/NG_police_button" />
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/NGtextView2"
-        android:layout_width="match_parent"
+        android:id="@+id/OGtextView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/OGtextView1"
         android:layout_weight="1"
-        android:text="Starting new game. Are you Robber or Police"
-        android:layout_below="@+id/NGtextView1"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp" />
+        android:text="Game is already going on" />
 
     <Button
-        android:id="@+id/NG_robber_button"
+        android:id="@+id/OG_continue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:text="Robber"
-        android:layout_marginStart="20dp"
-        android:layout_below="@+id/NGtextView2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="21dp" />
+        android:text="Continue game"
+        android:layout_below="@+id/OGtextView2"
+        android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/NG_police_button"
+        android:id="@+id/OG_EndGame_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:text="Police"
-        android:layout_alignBaseline="@+id/NG_robber_button"
-        android:layout_alignBottom="@+id/NG_robber_button"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="85dp" />
+        android:text="End Game and start new"
+        android:layout_below="@+id/OGtextView2"
+        android:layout_alignParentEnd="true" />
 
 
 
