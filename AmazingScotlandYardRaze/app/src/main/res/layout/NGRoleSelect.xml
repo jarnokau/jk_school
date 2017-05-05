@@ -13,7 +13,7 @@
         android:id="@+id/NGtextView1"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="56dp"
         android:text="Welcome to AmasingScotlandYardRaze!"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/NG_police_button" />
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Starting new game. Are you Robber or Police"
+        android:text="Starting new game."
         android:layout_below="@+id/NGtextView1"
         android:layout_alignParentStart="true"
         android:layout_marginTop="16dp" />

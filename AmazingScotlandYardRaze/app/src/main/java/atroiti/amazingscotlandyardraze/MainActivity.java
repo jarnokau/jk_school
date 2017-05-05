@@ -1,9 +1,12 @@
 package atroiti.amazingscotlandyardraze;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import java.io.File;
@@ -12,6 +15,8 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.String;
+
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,52 +26,38 @@ public class MainActivity extends AppCompatActivity {
     Button RobberButton,PoliceButton;
     Button ContinueButton, EndGameButton;
     Boolean newGame;
+    public static final String PREF = "gameFile";
+    private String Role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String path = String.valueOf(getFilesDir());
-        String filename = "gameFile.cfg";
-        Boolean fileExists;
-        // check is there game file present
-        fileExists = fileExistance(filename);
-        if(fileExists) {
+
+        SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
+        // check is there game role present
+        Role = sharedPrefs.getString("ROLE","nothing");
+        Log.i("Variable",Role);
+        if(Role!="nothing") {
+             //sharePreferences found
+            Log.i("Status","Old game");
             newGame = false;
-            // if file exist, read information from it(is player robber/police etc) then later on based on that open correct view
-
-            //read rows from given file
-            //first row contains role: Robber or Police
-            //second row contains contact information of another player
-
-            //inside activity_main open content_main2 = continue or not
-            //this happens only when starting application
-
-            //if continue open role related view
-            //if does not continue, delete game file and open new game view
         }else{
+             //sharePreferences not found
+            Log.i("Status","New game");
             newGame = true;
         }
-            //if file does not exists, open "new game view"
-
-            setContentView(R.layout.activity_main);
-            RobberButton = (Button)(findViewById(R.id.Location1_button));
-            RobberButton.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-
-                                                }
-                                            });
-            // inside activity_main open content_main = new game view
-            //
-
-
-
-
-        // game file will be removed when game ends (using "end game" button)
-
-        //setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+Log.i("loadView","activityMain");
+        setContentView(R.layout.activity_main);
+        //get handles at activity_main view
+        TabLayout TabLay = (TabLayout) findViewById(R.id.tabs);
+        ViewPager VPager = (ViewPager) findViewById(R.id.viewpager);
+Log.i("handles","both created");
+        //create NewGameAdapter Object
+        NewGamePageAdapter MyPager = new NewGamePageAdapter(getSupportFragmentManager());
+        VPager.setAdapter(MyPager);
+        TabLay.setupWithViewPager(VPager);
+Log.i("view","newgame");
 
     }
 
