@@ -22,13 +22,16 @@ public class NewGameView extends Fragment{
         Button PoliceButton = (Button) v.findViewById(R.id.NG_police_button);
         String tmp ="", tmpLine="";
         //SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
+        //Editor editor = sharedpreferences.edit();
+
         RobberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //set role Robber
                 String Role = "Robber";
                 Log.i("role choosen","Robber");
-                sharedPrefs.getString("ROLE","nothing");
+                //editor.putString("ROLE", "Robber");
+                //editor.commit();
             }
         });
         PoliceButton.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +40,8 @@ public class NewGameView extends Fragment{
                 //set role Police
                 String Role = "Police";
                 Log.i("role choosen","Police");
+                //editor.putString("ROLE", "Police");
+                //editor.commit();
             }
         });
         //role is selected
