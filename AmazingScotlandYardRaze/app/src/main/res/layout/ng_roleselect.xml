@@ -21,11 +21,11 @@
         android:id="@+id/NGtextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_weight="1"
         android:text="Starting new game."
         android:layout_below="@+id/NGtextView1"
-        android:layout_toEndOf="@+id/NG_robber_button" />
+        android:layout_alignStart="@+id/NG_CloseButton" />
 
     <Button
         android:id="@+id/NG_robber_button"
@@ -33,10 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:text="Robber"
-        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
         android:layout_below="@+id/NGtextView2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="21dp" />
+        android:layout_alignStart="@+id/NGtextView1" />
 
     <Button
         android:id="@+id/NG_police_button"
@@ -53,10 +52,21 @@
         android:id="@+id/NG_CloseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/NG_police_button"
         android:layout_marginTop="23dp"
-        android:layout_toStartOf="@+id/NG_police_button"
-        android:text="Close App" />
+        android:text="Close App"
+        android:layout_below="@+id/NG_robber_button"
+        android:layout_alignStart="@+id/NG_robber_button"
+        android:layout_marginStart="76dp" />
+
+    <TextView
+        android:id="@+id/NGInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Make sure GPS is turned ON"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="127dp" />
 
 
 </android.widget.RelativeLayout>

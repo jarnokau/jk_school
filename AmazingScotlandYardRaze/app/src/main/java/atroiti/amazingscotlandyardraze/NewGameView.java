@@ -23,8 +23,8 @@ public class NewGameView extends Fragment{
         Button RobberButton = (Button) v.findViewById(R.id.NG_robber_button);
         Button PoliceButton = (Button) v.findViewById(R.id.NG_police_button);
         Button CloseButton = (Button) v.findViewById(R.id.NG_CloseButton);
-        String tmp ="", tmpLine="";
-//inittialize mainActivity where we have some public funtions
+
+//initialize mainActivity where we have some public funtions
         final MainActivity mActivity= new MainActivity();
         //SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
         //Editor editor = sharedpreferences.edit();
