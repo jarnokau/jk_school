@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="atroiti.amazingscotlandyardraze.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="atroiti.amazingscotlandyardraze.MainActivity">
 
 
     <TextView
@@ -20,13 +19,13 @@
 
     <TextView
         android:id="@+id/NGtextView2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:text="Starting new game."
         android:layout_below="@+id/NGtextView1"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp" />
+        android:layout_toEndOf="@+id/NG_robber_button" />
 
     <Button
         android:id="@+id/NG_robber_button"
@@ -50,6 +49,14 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="85dp" />
 
+    <Button
+        android:id="@+id/NG_CloseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NG_police_button"
+        android:layout_marginTop="23dp"
+        android:layout_toStartOf="@+id/NG_police_button"
+        android:text="Close App" />
 
 
 </android.widget.RelativeLayout>

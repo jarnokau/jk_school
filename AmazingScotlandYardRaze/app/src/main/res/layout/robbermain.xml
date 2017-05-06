@@ -35,6 +35,6 @@
         android:id="@+id/cancelButton"
         android:layout_width="183dp"
         android:layout_height="wrap_content"
-        android:text="Cancel settings" />
+        android:text="Cancel and Quit" />
 
 </LinearLayout>

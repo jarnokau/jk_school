@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class RobberMain extends Fragment{
+public class RobberGame extends Fragment{
     @Nullable
     @Override
     //populate subView
@@ -29,10 +30,10 @@ public class RobberMain extends Fragment{
                 //set role Robber
                 FragmentTransaction trans = getFragmentManager()
                         .beginTransaction();
-                //save settings and open puzzle view
+                //selected role Robber in new game, open newgame robber view
                 trans.replace(R.id.root_frame, new RobberGame());
-
-
+                String Role = "Robber";
+                Log.i("role choosen","Robber");
                 //editor.putString("ROLE", "Robber");
                 //editor.commit();
             }
@@ -40,14 +41,15 @@ public class RobberMain extends Fragment{
         CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Cancel button
-                //remove role selection
-                //open new game view
-
+                //set role Police
+                String Role = "Police";
+                Log.i("role choosen","Police");
+                //editor.putString("ROLE", "Police");
+                //editor.commit();
             }
         });
         //role is selected
-
+        Log.i("pagerView","loaded");
         return v;
     }
 }

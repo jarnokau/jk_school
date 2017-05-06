@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
         // check is there game role present
-        Role = sharedPrefs.getString("ROLE","nothing");
+        Role =getRole(this);
+        //Role = sharedPrefs.getString("ROLE","nothing");
         Log.i("Variable",Role);
         if(Role!="nothing") {
             //sharePreferences found
@@ -121,10 +122,51 @@ public class MainActivity extends AppCompatActivity {
             // Inflate the layout for this fragment
             View view = inflater
                     .inflate(R.layout.static_fragment, container, false);
-
             return view;
         }
+    }
+    public static void setRole( String value, Context context) {
+        //stores selected role
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("ROLE", value);
+        editor.commit();
+    }
+    public static void setOtherPlayer( String value, Context context) {
+        //stores otherplayers contact info
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("OtherPlayer", value);
+        editor.commit();
+    }
 
+    public static boolean DeleteRole( Context context) {
+        //deletes chosen role
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        prefs.edit().remove("ROLE");
+        //prefs.edit().commit();
+        prefs.edit().apply();
+        return true;
+    }
+    public static boolean DeleteOtherPlayer( Context context) {
+        //deletes otherplayer contact info
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        prefs.edit().remove("OtherPlayer");
+        //prefs.edit().commit();
+        prefs.edit().apply();
+        return true;
+    }
+    public static String getRole( Context context) {
+        //returns stored value of Role, if does not exist, returns "nothing" as default
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return prefs.getString("ROLE", "nothing");
+    }
+    public static String getOtherPlayer( Context context) {
+        //returns stored contact info  of otherplayer, if does not exist, returns "nothing" as default
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return prefs.getString("OtherPlayer", "nothing");
     }
 
 }
