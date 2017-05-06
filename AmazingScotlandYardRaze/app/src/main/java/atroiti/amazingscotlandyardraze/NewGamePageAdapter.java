@@ -4,9 +4,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
-/**
- * Created by cpt2jk2 on 5.5.2017.
- */
 /* luodaan mypageAdapter luokka */
 public class NewGamePageAdapter extends FragmentPagerAdapter{
 

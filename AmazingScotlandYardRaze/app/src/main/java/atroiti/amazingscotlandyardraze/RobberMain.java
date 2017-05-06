@@ -11,35 +11,34 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class NewGameView extends Fragment{
+public class RobberMain extends Fragment{
     @Nullable
     @Override
     //populate subView
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate( R.layout.ng_roleselect, container, false);
+        View v = inflater.inflate( R.layout.robbermain, container, false);
         //define buttons
-        Button RobberButton = (Button) v.findViewById(R.id.NG_robber_button);
-        Button PoliceButton = (Button) v.findViewById(R.id.NG_police_button);
+        Button SaveButton = (Button) v.findViewById(R.id.SaveSettingButton);
+        Button CancelButton = (Button) v.findViewById(R.id.cancelButton);
         String tmp ="", tmpLine="";
         //SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
         //Editor editor = sharedpreferences.edit();
 
-        RobberButton.setOnClickListener(new View.OnClickListener() {
+        SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //set role Robber
                 FragmentTransaction trans = getFragmentManager()
                         .beginTransaction();
                 //selected role Robber in new game, open newgame robber view
-                trans.replace(R.id.root_frame, new RobberMain());
+                trans.replace(R.id.root_frame, new RobberPuzzle());
                 String Role = "Robber";
-                trans.commit();
                 Log.i("role choosen","Robber");
                 //editor.putString("ROLE", "Robber");
                 //editor.commit();
             }
         });
-        PoliceButton.setOnClickListener(new View.OnClickListener() {
+        CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //set role Police

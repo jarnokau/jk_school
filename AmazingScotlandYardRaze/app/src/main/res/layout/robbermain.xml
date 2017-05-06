@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player name" />
+        android:text="Player name/phone number" />
 
     <TextView
         android:id="@+id/RMtextView2"
@@ -26,11 +26,15 @@
         android:text="Click save when done" />
 
     <Button
-        android:id="@+id/SendPuzzleButton"
+        android:id="@+id/SaveSettingButton"
         android:layout_width="183dp"
         android:layout_height="wrap_content"
         android:text="Save settings" />
 
-
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel settings" />
 
 </LinearLayout>
