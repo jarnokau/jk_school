@@ -23,6 +23,7 @@ public class NewGameView extends Fragment{
         Button RobberButton = (Button) v.findViewById(R.id.NG_robber_button);
         Button PoliceButton = (Button) v.findViewById(R.id.NG_police_button);
         Button CloseButton = (Button) v.findViewById(R.id.NG_CloseButton);
+        Button TestButton = (Button) v.findViewById(R.id.NG_TestButton);
 
 //initialize mainActivity where we have some public funtions
         final MainActivity mActivity= new MainActivity();
@@ -68,6 +69,13 @@ public class NewGameView extends Fragment{
             public void onClick(View v) {
                 //simply close app, leave settings as they were
                  System.exit(0);
+            }
+        });
+        TestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //simply close app, leave settings as they were
+                mActivity.sendMMS(getContext());
             }
         });
 

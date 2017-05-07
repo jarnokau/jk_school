@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
 
-        sendEmail();
+        //sendEmail();
         // check is there game role present
         Role =getRole(this);
         //Role = sharedPrefs.getString("ROLE","nothing");
@@ -167,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         return prefs.getString("OtherPlayer", "nothing");
     }
+    /*
     protected void sendEmail() {
         Log.i("Send email", "");
 
@@ -187,14 +188,14 @@ public class MainActivity extends AppCompatActivity {
         } catch (android.content.ActivityNotFoundException ex) {
             Log.i("email","no Client installed");
         }
-    }
-    public void sendMMS(){
+    }*/
+    public void sendMMS(Context context){
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         sendIntent.setClassName("com.android.mms", "com.android.mms.ui.ComposeMessageActivity");
-        sendIntent.putExtra("address", "1213123123");
-        sendIntent.putExtra("sms_body", "some text");
-        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/image_4.png"));
-        sendIntent.setType("image/png");
+        sendIntent.putExtra("address", "0405707346");
+        sendIntent.putExtra("sms_body", "test message");
+        //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/image_4.png"));
+        //sendIntent.setType("image/png");
         startActivity(sendIntent);;
     }
 

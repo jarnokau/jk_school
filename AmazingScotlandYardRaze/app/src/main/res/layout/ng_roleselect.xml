@@ -58,6 +58,17 @@
         android:layout_alignStart="@+id/NG_robber_button"
         android:layout_marginStart="76dp" />
 
+
+    <Button
+        android:id="@+id/NG_TestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="Test Funktion"
+        android:layout_below="@+id/NG_CloseButton"
+        android:layout_alignStart="@+id/NG_robber_button"
+        android:layout_marginStart="76dp" />
+
     <TextView
         android:id="@+id/NGInfoText"
         android:layout_width="wrap_content"

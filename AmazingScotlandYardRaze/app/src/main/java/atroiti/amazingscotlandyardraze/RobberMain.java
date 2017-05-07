@@ -25,12 +25,14 @@ public class RobberMain extends Fragment{
         final MainActivity mActivity= new MainActivity();
         final TextView tv = (TextView) v.findViewById(R.id.RM_PolicePlayer);
 
+
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //set role Robber
                 Log.i("SaveButton","clicked");
-                //String OtherPlayer = (String) tv.getText();
+                //Comman below throw an error
+                String OtherPlayer = (String) tv.getText().toString();
                 Log.i("Otherplayer","contact info optained");
                 //save settings
                 mActivity.setOtherPlayer(tv.getText().toString(),getContext());
@@ -38,11 +40,14 @@ public class RobberMain extends Fragment{
                 //Open Puzzle View
                 FragmentTransaction trans = getFragmentManager()
                         .beginTransaction();
+                Log.i("frame","open gameview next");
                 trans.replace(R.id.root_frame, new RobberGame());
+                Log.i("frame","commit next");
                 trans.commit();
-
+                Log.i("frame","commit done");
             }
         });
+
         CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

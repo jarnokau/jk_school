@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 
 public class RobberGame extends Fragment{
+
     private LocationManager locMana;
     private LocationListener locLis;
     static protected Location startLoc = null;
@@ -28,8 +29,9 @@ public class RobberGame extends Fragment{
     @Override
     //populate subView
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate( R.layout.robbermain, container, false);
+        View v = inflater.inflate( R.layout.robberpuzzle, container, false);
         //define buttons
+        Log.i("here"," we are now");
         Button SendButton = (Button) v.findViewById(R.id.RGSendPuzzleButton);
         ImageButton CameraButton = (ImageButton) v.findViewById(R.id.RGTakePictureButton);
         final TextView GPS = (TextView) v.findViewById(R.id.RG_GPSLocation);
