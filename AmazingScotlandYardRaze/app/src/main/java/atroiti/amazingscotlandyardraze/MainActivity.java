@@ -1,6 +1,7 @@
 package atroiti.amazingscotlandyardraze;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         String path = String.valueOf(getFilesDir());
 
         SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
+
+        sendEmail();
         // check is there game role present
         Role =getRole(this);
         //Role = sharedPrefs.getString("ROLE","nothing");
@@ -163,6 +166,36 @@ public class MainActivity extends AppCompatActivity {
         //returns stored contact info  of otherplayer, if does not exist, returns "nothing" as default
         SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         return prefs.getString("OtherPlayer", "nothing");
+    }
+    protected void sendEmail() {
+        Log.i("Send email", "");
+
+        String[] TO = {"jarno.kaunisto@gmail.com"};
+
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+            Log.i("Email", "Sent successfully");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Log.i("email","no Client installed");
+        }
+    }
+    public void sendMMS(){
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setClassName("com.android.mms", "com.android.mms.ui.ComposeMessageActivity");
+        sendIntent.putExtra("address", "1213123123");
+        sendIntent.putExtra("sms_body", "some text");
+        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/image_4.png"));
+        sendIntent.setType("image/png");
+        startActivity(sendIntent);;
     }
 
 }

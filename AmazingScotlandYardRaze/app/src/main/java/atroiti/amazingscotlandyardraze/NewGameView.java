@@ -70,6 +70,7 @@ public class NewGameView extends Fragment{
                  System.exit(0);
             }
         });
+
         //role is selected
         return v;
     }

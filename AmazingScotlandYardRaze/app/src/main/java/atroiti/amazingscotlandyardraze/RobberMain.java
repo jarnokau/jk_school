@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,12 @@ public class RobberMain extends Fragment{
             @Override
             public void onClick(View v) {
                 //set role Robber
-                String OtherPlayer = (String) tv.getText();
+                Log.i("SaveButton","clicked");
+                //String OtherPlayer = (String) tv.getText();
+                Log.i("Otherplayer","contact info optained");
                 //save settings
-                mActivity.setOtherPlayer(OtherPlayer,getContext());
+                mActivity.setOtherPlayer(tv.getText().toString(),getContext());
+                Log.i("OtherPlayer","information saved to sharedPreferences");
                 //Open Puzzle View
                 FragmentTransaction trans = getFragmentManager()
                         .beginTransaction();
