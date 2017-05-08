@@ -22,95 +22,61 @@ import android.widget.TextView;
 
 public class RobberGame extends Fragment{
 
-    private LocationManager locMana;
-    private LocationListener locLis;
+    LocationListener locLis;
+
+    private MainActivity mActivity;
     static protected Location startLoc = null;
+
     @Nullable
     @Override
     //populate subView
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate( R.layout.robberpuzzle, container, false);
         //define buttons
         Log.i("here"," we are now");
         Button SendButton = (Button) v.findViewById(R.id.RGSendPuzzleButton);
         ImageButton CameraButton = (ImageButton) v.findViewById(R.id.RGTakePictureButton);
+        Log.i("here","Buttons ok, next define view");
         final TextView GPS = (TextView) v.findViewById(R.id.RG_GPSLocation);
         //init main activity
         final MainActivity mActivity= new MainActivity();
-
         final TextView RGPuzzleField = (TextView) v.findViewById(R.id.RG_GPSLocation);
-        //define location manager
-        locMana = (LocationManager) mActivity.getSystemService(Context.LOCATION_SERVICE);
+        Log.i("here","next define location manager");
 
-        locLis = new LocationListener(){
-
-            @Override
-            public void onLocationChanged(Location location){
-                startLoc = location;
-
-                GPS.setText("" + startLoc.getLatitude()+ "-" + startLoc.getLongitude());
-
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) { }
-
-            @Override
-            public void onProviderEnabled(String provider) { }
-
-            @Override
-            public void onProviderDisabled(String provider) { }
-        };
-
+//send button that will send puzzle, ansver, GPS and photo to otherplayer
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("here","send MMS");
                 //Get GPS coordinates from TextView
-                String GPSCoordinates = GPS.getText().toString();
-                //add puzzle to SQLite db( !TODO if there is time)
-                String Puzzle = GPS.getText().toString();
+                //String GPSCoordinates = GPS.getText().toString();
+                //add puzzle to SQLite db
+                //String Puzzle = GPS.getText().toString();
+
                 //Send puzzle button
+                //send MMS message
+                mActivity.sendMMS(getContext());
+                //mActivity.sendEmail(getContext());
                 //check if ansver is empty/default
                 //check if puzzle is empty / default
                 //
-
-
             }
         });
+//camera button that will first activate camera and then place last image in imageView
         CameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //take picture from Camera
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivity(cameraIntent);
-                // Find the last picture
-                String[] projection = new String[]{
-                        MediaStore.Images.ImageColumns._ID,
-                        MediaStore.Images.ImageColumns.DATA,
-                        MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
-                        MediaStore.Images.ImageColumns.DATE_TAKEN,
-                        MediaStore.Images.ImageColumns.MIME_TYPE
-                };
-                final Cursor cursor = getContext().getContentResolver()
-                        .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
-                                null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
-
-// Put Last Image in the image view
-                /*
-                if (cursor.moveToFirst()) {
-                    final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
-                    String imageLocation = cursor.getString(1);
-                    File imageFile = new File(imageLocation);
-                    if (imageFile.exists()) {   // TODO: is there a better way to do this?
-                        Bitmap bm = BitmapFactory.decodeFile(imageLocation);
-                        imageView.setImageBitmap(bm);
-                    }
-                }
-                */
+                Log.i("here","at camera button");
+                //activate camera
+                //get last image URI
+                //place image to imageView
+                mActivity.activateCamera(getContext());
 
             }
         });
-        //role is selected
+
+
         Log.i("pagerView","loaded");
         return v;
     }

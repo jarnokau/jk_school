@@ -1,8 +1,12 @@
 package atroiti.amazingscotlandyardraze;
 
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
@@ -27,8 +31,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import static java.security.AccessController.getContext;
+
 
 public class MainActivity extends AppCompatActivity {
+    LocationManager locMana;
     Button RobberButton,PoliceButton;
     Button ContinueButton, EndGameButton;
     NewGamePageAdapter MyPager;
@@ -36,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String PREF = "gameFile";
     private String Role;
     static final int NUM_ITEMS = 2;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Status","New game");
             newGame = true;
         }
+
         Log.i("loadView","activityMain");
         setContentView(R.layout.activity_main);
         //get handles at activity_main view
@@ -167,12 +176,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         return prefs.getString("OtherPlayer", "nothing");
     }
-    /*
-    protected void sendEmail() {
-        Log.i("Send email", "");
 
+    protected void sendEmail(Context context) {
+        //Works
+        Log.i("Send email", " starting ");
         String[] TO = {"jarno.kaunisto@gmail.com"};
-
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
@@ -180,23 +188,41 @@ public class MainActivity extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
-
+        Log.i("Send email", " starting activity");
         try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            context.startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             finish();
             Log.i("Email", "Sent successfully");
         } catch (android.content.ActivityNotFoundException ex) {
             Log.i("email","no Client installed");
-        }
-    }*/
+        } catch (Exception ex){
+            Log.e("error","err",ex);
+        };
+    }
     public void sendMMS(Context context){
+        Log.i("here","in MMS function");
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        Log.i("here","after sentIntent");
         sendIntent.setClassName("com.android.mms", "com.android.mms.ui.ComposeMessageActivity");
+        Log.i("here","after setClassName");
         sendIntent.putExtra("address", "0405707346");
         sendIntent.putExtra("sms_body", "test message");
         //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/image_4.png"));
         //sendIntent.setType("image/png");
-        startActivity(sendIntent);;
+        Log.i("here","next will startActivity");
+        context.startActivity(sendIntent);
+    }
+public boolean activateCamera(Context context) {
+    Log.i("here","in ActivateCamera");
+
+    //private void dispatchTakePictureIntent() {
+    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    Log.i("here","intent created");
+    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+        Log.i("here","next start activity");
+        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+    }
+    return true;
     }
 
 }
