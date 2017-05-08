@@ -25,7 +25,6 @@ public class RobberMain extends Fragment{
         final MainActivity mActivity= new MainActivity();
         final TextView tv = (TextView) v.findViewById(R.id.RM_PolicePlayer);
 
-
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

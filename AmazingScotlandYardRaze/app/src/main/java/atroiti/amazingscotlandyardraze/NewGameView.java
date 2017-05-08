@@ -75,7 +75,7 @@ public class NewGameView extends Fragment{
             @Override
             public void onClick(View v) {
                 //simply close app, leave settings as they were
-                mActivity.sendMMS(getContext());
+                //mActivity.sendMMS(getContext());
             }
         });
 

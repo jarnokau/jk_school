@@ -69,10 +69,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         String path = String.valueOf(getFilesDir());
 
-
         SharedPreferences sharedPrefs = getSharedPreferences(PREF, MODE_PRIVATE);
-
-        //sendEmail();
         // check is there game role present
         Role = getRole(this);
         //Role = sharedPrefs.getString("ROLE","nothing");
@@ -86,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Status", "New game");
             newGame = true;
         }
-
         Log.i("loadView", "activityMain");
         setContentView(R.layout.activity_main);
         //get handles at activity_main view
@@ -98,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         VPager.setAdapter(MyPager);
         TabLay.setupWithViewPager(VPager);
         Log.i("view", "newgame");
-
     }
 
     public class NewGamePageAdapter extends FragmentPagerAdapter {
@@ -230,20 +225,6 @@ public class MainActivity extends AppCompatActivity {
         ;
     }
 
-    public void sendMMS(Context context) {
-        Log.i("here", "in MMS function");
-        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        Log.i("here", "after sentIntent");
-        sendIntent.setClassName("com.android.mms", "com.android.mms.ui.ComposeMessageActivity");
-        Log.i("here", "after setClassName");
-        sendIntent.putExtra("address", "0405707346");
-        sendIntent.putExtra("sms_body", "test message");
-        //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/image_4.png"));
-        //sendIntent.setType("image/png");
-        Log.i("here", "next will startActivity");
-        context.startActivity(sendIntent);
-    }
-
     protected String GPS(Context context) {
         Log.i("GPS", "Getting GPS location");
          LocationManager mLocationManager;
@@ -295,8 +276,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i("GPS", String.valueOf(latitude));
         Log.i("GPS", String.valueOf(longitude));
 
-        //while (latitude == 0.0) {
-        if (latitude == 0.0) {
+        while (latitude == 0.0) {
+        //if (latitude == 0.0) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MINIMUM_TIME_BETWEEN_UPDATES, MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,locLis);
             Log.d("GPS", "GPS Enabled");
             if (mLocationManager != null) {
@@ -312,11 +293,14 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("GPS", String.valueOf(latitude));
         Log.i("GPS", String.valueOf(longitude));
-        if (mLocation== null){
-            return "1-1";
+        //want to return both, but can return only one string, so combine them
+        String returnValue;
+        if (latitude == 0.0){
+            returnValue = "1-1";
         }else {
-            return mLocation.toString();
+            returnValue = String.valueOf(latitude)+"-"+String.valueOf(longitude);
         }
+        return returnValue;
         }
 
 public boolean activateCamera(Context context) {
