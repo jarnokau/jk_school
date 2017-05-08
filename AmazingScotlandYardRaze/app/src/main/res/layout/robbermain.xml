@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player email/phone number" />
+        android:text="Player email" />
     <TextView
         android:id="@+id/RMinvisibleView2"
         android:layout_width="match_parent"

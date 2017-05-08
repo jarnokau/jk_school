@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         return prefs.getString("OtherPlayer", "nothing");
     }
 
-    protected void sendEmail(String email, String body, Context context) {
+    protected void sendEmail(String email, String subject, String body, Context context) {
         //Works
         Log.i("Send email", " starting ");
         String[] TO = {email};
@@ -295,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i("GPS", String.valueOf(latitude));
         Log.i("GPS", String.valueOf(longitude));
 
+        //while (latitude == 0.0) {
         if (latitude == 0.0) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MINIMUM_TIME_BETWEEN_UPDATES, MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,locLis);
             Log.d("GPS", "GPS Enabled");
@@ -311,7 +312,11 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("GPS", String.valueOf(latitude));
         Log.i("GPS", String.valueOf(longitude));
-        return mLocation.toString();
+        if (mLocation== null){
+            return "1-1";
+        }else {
+            return mLocation.toString();
+        }
         }
 
 public boolean activateCamera(Context context) {

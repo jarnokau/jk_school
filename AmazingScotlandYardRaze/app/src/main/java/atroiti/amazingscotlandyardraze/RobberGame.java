@@ -41,29 +41,34 @@ public class RobberGame extends Fragment{
         final TextView GPS = (TextView) v.findViewById(R.id.RG_GPSLocation);
         //init main activity
         final MainActivity mActivity= new MainActivity();
-        final TextView RGPuzzleField = (TextView) v.findViewById(R.id.RG_GPSLocation);
+        final TextView RGPuzzleField = (TextView) v.findViewById(R.id.RGPuzzleField);
+        final TextView RGAnsverField = (TextView) v.findViewById(R.id.RGAnswerField);
         Log.i("here","next define location manager");
 
 //send button that will send puzzle, ansver, GPS and photo to otherplayer
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Send puzzle button
+                //change button text to "getting GPS location...
                 Log.i("here","send MMS");
                 String OtherPlayer = mActivity.getOtherPlayer(getContext());
                 Log.i("otherplayer is",OtherPlayer);
                 //Get GPS coordinates from TextView
+                //change button text to "getting GPS location...
                 String GPSCoordinates = mActivity.GPS(getContext()).toString();
                 Log.i("GPS is","GPSCoordinates");
-                //add puzzle to SQLite db
-                //String Puzzle = GPS.getText().toString();
+                //get puzzle and ansver
+                String Puzzle = RGPuzzleField.getText().toString() ;
+                String ansver = RGAnsverField.getText().toString() ;
+                //maybe later add puzzle to SQLite db
 
-                //Send puzzle button
                 //send MMS message
-               // mActivity.sendMMS(getContext());
-                mActivity.sendEmail(OtherPlayer,"GPS coordinates here",getContext());
+
+                mActivity.sendEmail(OtherPlayer,"Subject here","GPS coordinates,puzzle and ansver here",getContext());
                 //check if ansver is empty/default
                 //check if puzzle is empty / default
-                //
+                //Reset puzzle and ansver fields, increase puzzle counter
             }
         });
 //camera button that will first activate camera and then place last image in imageView
