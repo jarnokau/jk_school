@@ -30,7 +30,7 @@ public class PoliceGame extends Fragment{
     //populate subView
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate( R.layout.robberpuzzle, container, false);
+        View v = inflater.inflate( R.layout.policepuzzle, container, false);
 
         //define buttons
         Log.i("here"," we are now");
