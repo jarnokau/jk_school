@@ -39,6 +39,7 @@ public class NewGameView extends Fragment{
                 String Role = "Robber";
                 //call public funktion from mainActivity that will store Role I SharedPreferences
                 mActivity.setRole(Role,getContext());
+                mActivity.setPuzzleId(0,getContext());
 //open Robber setup page
                 trans.replace(R.id.root_frame, new RobberMain());
                 trans.commit();
@@ -52,6 +53,7 @@ public class NewGameView extends Fragment{
                 String Role = "Police";
                 //save role selection to reference
                 mActivity.setRole(Role,getContext());
+                mActivity.setPuzzleId(0,getContext());
                 //open police setup role view
                 FragmentTransaction trans = getFragmentManager()
                         .beginTransaction();

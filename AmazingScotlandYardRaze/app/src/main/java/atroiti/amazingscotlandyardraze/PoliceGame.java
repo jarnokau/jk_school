@@ -1,6 +1,5 @@
 package atroiti.amazingscotlandyardraze;
 
-import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class RobberGame extends Fragment{
+public class PoliceGame extends Fragment{
 
     LocationListener locLis;
     Integer puzzleId;

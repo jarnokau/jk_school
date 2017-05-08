@@ -30,7 +30,7 @@ public class RobberMain extends Fragment{
             public void onClick(View v) {
                 //set role Robber
                 Log.i("SaveButton","clicked");
-                //Comman below throw an error
+
                 String OtherPlayer = (String) tv.getText().toString();
                 Log.i("Otherplayer","contact info optained");
                 //save settings

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/RMinvisibleView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/PMtextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="write Robber player in field below" />
+
+    <EditText
+        android:id="@+id/PM_RobberPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player email" />
+    <TextView
+        android:id="@+id/PMinvisibleView2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/PMtextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click save when done" />
+
+    <Button
+        android:id="@+id/SaveSettingButton"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:text="Save settings" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel and Quit" />
+
+</LinearLayout>
