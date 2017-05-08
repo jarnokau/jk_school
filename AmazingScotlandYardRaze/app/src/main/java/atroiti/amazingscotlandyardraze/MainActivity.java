@@ -19,13 +19,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.support.v7.app.ActionBarActivity;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
+
 
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+
 import android.support.v7.app.AppCompatActivity;
 
 import java.lang.String;
@@ -33,23 +33,20 @@ import java.lang.String;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
+
 
 import static java.security.AccessController.getContext;
 
 
 public class MainActivity extends AppCompatActivity {
-    private LocationManager locMana;
+
     private LocationListener locLis;
     //static protected Location startLoc = null;
     public Criteria criteria;
     public String bestProvider;
     public double latitude;
     public double longitude;
-    Button RobberButton, PoliceButton;
-    Button ContinueButton, EndGameButton;
+
     NewGamePageAdapter MyPager;
     Boolean newGame;
     public static final String PREF = "gameFile";
@@ -194,9 +191,22 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         return prefs.getString("ROLE", "nothing");
     }
+    public static Integer getPuzzleId(Context context) {
+        //returns stored value of Role, if does not exist, returns "nothing" as default
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        Integer NumValue = Integer.parseInt(prefs.getString("PuzzleId", "0"));
+        return NumValue;
+    }
+    public static void setPuzzleId(Integer value, Context context) {
+        //stores otherplayers contact info
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("PuzzleId", String.valueOf(value));
+        editor.commit();
+    }
 
     public static String getOtherPlayer(Context context) {
-        //returns stored contact info  of otherplayer, if does not exist, returns "nothing" as default
+        //returns stored contact info of otherplayer, if does not exist, returns "nothing" as default
         SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         return prefs.getString("OtherPlayer", "nothing");
     }

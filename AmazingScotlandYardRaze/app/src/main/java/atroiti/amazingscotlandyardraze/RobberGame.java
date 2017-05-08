@@ -55,7 +55,6 @@ public class RobberGame extends Fragment{
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Send puzzle button
                 //check if ansver is empty/default
                 //check if puzzle is empty / default
                 //if not default or empty, proceed with sending
@@ -65,11 +64,11 @@ public class RobberGame extends Fragment{
                 String OtherPlayer = mActivity.getOtherPlayer(getContext());
                 Log.i("otherplayer is",OtherPlayer);
                 //Get GPS coordinates in string format  latitude-longitude exam. 1.2345-5.66778
-                //change button text to "getting GPS location...
                 String GPSCoordinates = mActivity.GPS(getContext()).toString();
                 if (GPSCoordinates=="1-1"){
                     //no GPS location aquired, so do something
                 }
+                //separate latitude and longitude
                 String Lati=GPSCoordinates.substring(0,10);
                 String Longi=GPSCoordinates.substring(GPSCoordinates.indexOf("-")+1);
                 double Latitude= Double.parseDouble(Lati);
