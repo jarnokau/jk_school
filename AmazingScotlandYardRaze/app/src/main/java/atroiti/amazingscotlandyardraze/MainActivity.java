@@ -35,15 +35,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import static java.security.AccessController.getContext;
-
-
 public class MainActivity extends AppCompatActivity {
 
     private LocationListener locLis;
     //static protected Location startLoc = null;
-    public Criteria criteria;
-    public String bestProvider;
+
     public double latitude;
     public double longitude;
 
@@ -282,10 +278,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
         //write location to logcat in stringformat to check if it is null
-
         Log.i("GPS", String.valueOf(latitude));
         Log.i("GPS", String.valueOf(longitude));
-
         while (latitude == 0.0) {
         //if (latitude == 0.0) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MINIMUM_TIME_BETWEEN_UPDATES, MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,locLis);
@@ -297,7 +291,6 @@ public class MainActivity extends AppCompatActivity {
                     latitude = mLocation.getLatitude();
                     longitude = mLocation.getLongitude();
                 }
-
             }
         }
 

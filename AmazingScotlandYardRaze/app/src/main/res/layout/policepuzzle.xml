@@ -37,13 +37,13 @@
         android:text="Puzzle will come here"/>
 
     <TextView
-        android:id="@+id/RGtextView2"
+        android:id="@+id/PGtextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="write ansver here:" />
 
     <EditText
-        android:id="@+id/RGAnswerField"
+        android:id="@+id/PGAnswerField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -51,20 +51,20 @@
         android:text="answer here" />
 
         <TextView
-            android:id="@+id/RG_GPSHeader"
+            android:id="@+id/PG_GPSHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="When ready click send-button " />
 
      <Button
-        android:id="@+id/RGSendPuzzleButton"
+        android:id="@+id/PGSendAnsverButton"
         android:layout_width="183dp"
         android:layout_height="wrap_content"
         android:text="Send Ansver" />
 
 
     <ImageView
-        android:id="@+id/RPimageView"
+        android:id="@+id/PPimageView"
         android:layout_width="match_parent"
         android:layout_height="230dp"
         app:srcCompat="@android:drawable/btn_dialog"

@@ -34,19 +34,20 @@ public class PoliceGame extends Fragment{
 
         //define buttons
         Log.i("here"," we are now");
-        final Button SendButton = (Button) v.findViewById(R.id.RGSendPuzzleButton);
-        ImageButton CameraButton = (ImageButton) v.findViewById(R.id.RGTakePictureButton);
+        final Button SendButton = (Button) v.findViewById(R.id.PGSendAnsverButton);
+
         Log.i("here","Buttons ok, next define view");
-        final TextView GPS = (TextView) v.findViewById(R.id.RG_GPSLocation);
+        final TextView GPS = (TextView) v.findViewById(R.id.PG_GPSHeader);
         //init main activity
         final MainActivity mActivity= new MainActivity();
-        final TextView RGPuzzleField = (TextView) v.findViewById(R.id.RGPuzzleField);
-        final TextView RGAnsverField = (TextView) v.findViewById(R.id.RGAnswerField);
-        final TextView RGPuzzleIDField = (TextView) v.findViewById(R.id.RPPuzzleNumber1);
+        final TextView RGPuzzleField = (TextView) v.findViewById(R.id.PGPuzzleField);
+        final TextView RGAnsverField = (TextView) v.findViewById(R.id.PGAnswerField);
+        final TextView RGPuzzleIDField = (TextView) v.findViewById(R.id.PGPuzzleNumber1);
         //GetPuzzleID, if it is 0 then its new game and 1st puzzle, change it to 1
         puzzleId = mActivity.getPuzzleId(getContext());
         Log.i("PuzzleID is",puzzleId.toString());
         if (puzzleId == 0) {
+            //got to wait page, until email arraives
             puzzleId=1;
             Log.i("PuzzleID is",puzzleId.toString());
         };
@@ -115,19 +116,6 @@ public class PoliceGame extends Fragment{
                 SendButton.setText("Send Next Puzzle");
             }
         });
-//camera button that will first activate camera and then place last image in imageView
-        CameraButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("here","at camera button");
-                //activate camera
-                //get last image URI
-                //place image to imageView
-                mActivity.activateCamera(getContext());
-
-            }
-        });
-
 
         Log.i("pagerView","loaded");
         return v;

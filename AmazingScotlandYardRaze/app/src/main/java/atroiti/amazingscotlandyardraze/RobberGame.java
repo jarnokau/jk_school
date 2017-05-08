@@ -38,7 +38,7 @@ public class RobberGame extends Fragment{
         final Button SendButton = (Button) v.findViewById(R.id.RGSendPuzzleButton);
         ImageButton CameraButton = (ImageButton) v.findViewById(R.id.RGTakePictureButton);
         Log.i("here","Buttons ok, next define view");
-        final TextView GPS = (TextView) v.findViewById(R.id.RG_GPSLocation);
+        final TextView GPS = (TextView) v.findViewById(R.id.RG_GPSHeader);
         //init main activity
         final MainActivity mActivity= new MainActivity();
         final TextView RGPuzzleField = (TextView) v.findViewById(R.id.RGPuzzleField);
