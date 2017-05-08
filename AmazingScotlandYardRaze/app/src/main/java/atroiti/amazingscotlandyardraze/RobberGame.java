@@ -49,15 +49,18 @@ public class RobberGame extends Fragment{
             @Override
             public void onClick(View v) {
                 Log.i("here","send MMS");
+                String OtherPlayer = mActivity.getOtherPlayer(getContext());
+                Log.i("otherplayer is",OtherPlayer);
                 //Get GPS coordinates from TextView
-                //String GPSCoordinates = GPS.getText().toString();
+                String GPSCoordinates = mActivity.GPS(getContext()).toString();
+                Log.i("GPS is","GPSCoordinates");
                 //add puzzle to SQLite db
                 //String Puzzle = GPS.getText().toString();
 
                 //Send puzzle button
                 //send MMS message
-                mActivity.sendMMS(getContext());
-                //mActivity.sendEmail(getContext());
+               // mActivity.sendMMS(getContext());
+                mActivity.sendEmail(OtherPlayer,"GPS coordinates here",getContext());
                 //check if ansver is empty/default
                 //check if puzzle is empty / default
                 //
