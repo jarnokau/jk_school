@@ -1,6 +1,7 @@
 package atroiti.amazingscotlandyardraze;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -58,7 +59,8 @@ public class RobberGame extends Fragment{
             Log.i("puzzleId", "is 6, now just have to wait");
             //trans.replace(R.id.root_frame, new RobberGame());
         }
-        RGPuzzleIDField.setText(puzzleId);
+        Log.i("puzzleId", "to field");
+        RGPuzzleIDField.setText(puzzleId.toString());
 //send button that will send puzzle, ansver, GPS and photo to otherplayer
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override

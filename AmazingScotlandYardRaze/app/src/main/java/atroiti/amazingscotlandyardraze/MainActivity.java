@@ -4,12 +4,14 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -28,11 +30,16 @@ import android.support.design.widget.TabLayout;
 
 import android.support.v7.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.String;
 
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+
+import static android.R.attr.data;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,12 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
     public double latitude;
     public double longitude;
+    File photoFile;
 
     NewGamePageAdapter MyPager;
     Boolean newGame;
     public static final String PREF = "gameFile";
     private String Role;
-    static final int NUM_ITEMS = 2;
+
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int MINIMUM_TIME_BETWEEN_UPDATES = 500;
     static final int MINIMUM_DISTANCE_CHANGE_FOR_UPDATES =0 ;
@@ -274,8 +282,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onProviderDisabled(String provider) { }
             };
-
-
         }
         //write location to logcat in stringformat to check if it is null
         Log.i("GPS", String.valueOf(latitude));
@@ -309,15 +315,30 @@ public class MainActivity extends AppCompatActivity {
 public boolean activateCamera(Context context) {
     Log.i("here","in ActivateCamera");
 
-    //private void dispatchTakePictureIntent() {
-    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-    Log.i("here","intent created");
-    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-        Log.i("here","takepicture not null so start activity");
-        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        //context.startActivity(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-    }
+            Intent takePictureIntent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(context.getPackageManager())!=null) {
+                startActivityForResult(takePictureIntent,REQUEST_IMAGE_CAPTURE);
+            }
+/*
+            @Override
+            protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
+                    //Bundle extras =data.getExtras();
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    //mImageView.setImageBitmap(imageBitmap);
+                }
+            }
+            */
+
     return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+        }
     }
 
 }
