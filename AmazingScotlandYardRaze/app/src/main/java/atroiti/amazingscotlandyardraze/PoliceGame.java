@@ -41,6 +41,7 @@ public class PoliceGame extends Fragment{
         final MainActivity mActivity= new MainActivity();
         final TextView PGPuzzleField = (TextView) v.findViewById(R.id.PGPuzzleField);
         final TextView PGAnsverField = (TextView) v.findViewById(R.id.PGAnswerField);
+        final TextView PGAnsverLabelField = (TextView) v.findViewById(R.id.PGtextView2);
         final TextView PGPuzzleIDField = (TextView) v.findViewById(R.id.PGPuzzleNumber1);
 
         //GetPuzzleID, if it is 0 then its new game and 1st puzzle, change it to 1
@@ -48,6 +49,8 @@ public class PoliceGame extends Fragment{
         Log.i("PuzzleID is",puzzleId.toString());
 
         if (puzzleId == 0) {
+            //new game, got to wait page until you get email with puzzle
+
             //got to wait page, until email arraives
             //puzzleId=1;
             Log.i("PuzzleID is",puzzleId.toString());
@@ -84,9 +87,16 @@ public class PoliceGame extends Fragment{
                 //Get ansver from SharePRef
                 if(MyAnsver == CorrectAnsver){
                     //ansver was correct
-                    //open wait screen
+                    //open tracking screen
+                    FragmentTransaction trans = getFragmentManager()
+                            .beginTransaction();
+                    //open Police setup view/page
+                    trans.replace(R.id.root_frame, new PoliceTracking());
+                    trans.commit();
                 }else{
                     //ansver was wrong
+                    //change text of PGtextView2
+                    PGAnsverLabelField.setText("Ansver was Wrong. Write ansver here:");
                 }
                 String OtherPlayer = mActivity.getOtherPlayer(getContext());
                 Log.i("otherplayer is",OtherPlayer);

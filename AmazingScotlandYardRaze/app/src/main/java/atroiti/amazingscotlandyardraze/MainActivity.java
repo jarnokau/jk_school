@@ -356,5 +356,18 @@ public boolean activateCamera(Context context) {
 
         }
     }
+    protected float distance(double myLati, double myLongi, double targetLati, double targetLongi) {
+        Location locationA = new Location("point A");
 
+        locationA.setLatitude(myLati);
+        locationA.setLongitude(myLongi);
+
+        Location locationB = new Location("point B");
+
+        locationB.setLatitude(targetLati);
+        locationB.setLongitude(targetLongi);
+
+        float distance = locationA.distanceTo(locationB);
+        return distance;
+    }
 }
