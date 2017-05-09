@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             return view;
         }
     }
-
+// here starts support functions
     public static void setPuzzle(String puzzle,String Ansver, Context context) {
 
         SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);

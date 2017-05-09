@@ -24,7 +24,7 @@ public class PoliceGame extends Fragment{
     Integer puzzleId;
     private MainActivity mActivity;
     static protected Location startLoc = null;
-    String CorrectAnsver;
+    String CorrectAnsver="nothing";
 
     @Nullable
     @Override
@@ -79,14 +79,13 @@ public class PoliceGame extends Fragment{
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //SendButton.setText("Waiting GPS location...");
-                Log.i("here","send MMS");
                 //Get ansver from text field
                 String MyAnsver = PGAnsverField.getText().toString() ;
+                Log.i("ansver",">"+MyAnsver+"<");
+                Log.i("Correct_ansver","<"+CorrectAnsver+">");
                 //Get ansver from SharePRef
-                if(MyAnsver == CorrectAnsver){
-                    //ansver was correct
+                if(MyAnsver.compareToIgnoreCase(CorrectAnsver)==0){
+                    Log.i("ansver"," Was correct");
                     //open tracking screen
                     FragmentTransaction trans = getFragmentManager()
                             .beginTransaction();
@@ -95,69 +94,42 @@ public class PoliceGame extends Fragment{
                     trans.commit();
                 }else{
                     //ansver was wrong
-                    //change text of PGtextView2
                     PGAnsverLabelField.setText("Ansver was Wrong. Write ansver here:");
                 }
-                String OtherPlayer = mActivity.getOtherPlayer(getContext());
-                Log.i("otherplayer is",OtherPlayer);
-                //Get GPS coordinates in string format  latitude-longitude exam. 1.2345-5.66778
-                String GPSCoordinates = mActivity.GPS(getContext()).toString();
-                if (GPSCoordinates=="1-1"){
-                    //no GPS location aquired, so do something
-                }
-                //separate latitude and longitude
-                String Lati=GPSCoordinates.substring(0,10);
-                String Longi=GPSCoordinates.substring(GPSCoordinates.indexOf("-")+1);
-                double Latitude= Double.parseDouble(Lati);
-                double Longitude= Double.parseDouble(Longi);
-                Log.i("GPS is",GPSCoordinates);
-                //get puzzle and ansver
-                String Puzzle = PGPuzzleField.getText().toString() ;
-                String ansver = PGAnsverField.getText().toString() ;
-                //maybe later add puzzle to SQLite db
-                Log.i("puzzle is",Puzzle);
-                Log.i("ansver is",ansver);
-                Log.i("PuzzleId is",puzzleId.toString());
-                Log.i("Latitude is",Lati);
-                Log.i("Longitude is",Longi);
-                //compose JSON message from data to be sent
-                String Subject = "[ASYR]"+puzzleId;
-                JSONObject obj = null;
-                JSONArray jsonArray = new JSONArray();
-                obj = new JSONObject();
-                try {
-                    obj.put("PuzzleId", puzzleId);
-                    obj.put("Puzzle", Puzzle);
-                    obj.put("ansver", ansver);
-                    obj.put("latitude", Latitude);
-                    obj.put("longitude", Longitude);
-                }catch (Exception ex) {
-                    Log.e("error", "err", ex);
-                }
-                Log.i("JSON is",obj.toString());
+
+                Log.i("asnver","Pass if sentence");
                 //mActivity.sendEmail(OtherPlayer,Subject,obj.toString(),getContext());
                 //Reset puzzle and ansver fields, increase puzzle counter
+                /*
                 puzzleId=puzzleId+1;
-                PGPuzzleIDField.setText(puzzleId);
+                PGPuzzleIDField.setText(puzzleId.toString());
                 mActivity.setPuzzleId(puzzleId,getContext());
                 PGPuzzleField.setText("Puzzle here");
                 PGAnsverField.setText("answer here");
                 SendButton.setText("Send Next Ansver");
+                */
             }
         });
         SimulateButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
+                                              //define simulated info
                                               puzzleId=1;
-                                              String Puzzle = "how much is 1+1";
-                                              String Ansver = "2";
-                                              //salmisaari
-                                              //latitude 60.164771,
-                                              // longitude 24.901189  //salmisaari
-                                              //metropolia leppävaara
-                                              //Latitude 60.221781
-                                              //longitude 24.804288
-                                              //distance 8.27km
+                                              String Puzzle = "how much is 1+2";
+                                              String Ansver = "3";
+                                              //store simulated info
+                                              mActivity.setPuzzleId(puzzleId,getContext());
+                                              mActivity.setPuzzle(Puzzle,Ansver,getContext());
+                                              //read simulated info
+                                              String PandA = mActivity.getPuzzle(getContext());
+                                              Integer index = PandA.indexOf("/");
+                                              Puzzle = PandA.substring(0, index);
+                                              CorrectAnsver = PandA.substring(index + 1);
+                                              Log.i("Puzzle", Puzzle);
+                                              Log.i("Ansver", CorrectAnsver);
+                                              //puzzle found and will be placed visible
+                                              PGPuzzleIDField.setText(puzzleId.toString());
+                                              PGPuzzleField.setText(Puzzle);
                                           }
                                       });
         Log.i("pagerView","loaded");

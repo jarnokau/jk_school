@@ -85,7 +85,7 @@
         android:text="" />
 
      <Button
-        android:id="@+id/PGSendAnsverButton"
+        android:id="@+id/PTUpdateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="update location and distance" />
@@ -96,7 +96,7 @@
         android:text="" />
 
     <Button
-        android:id="@+id/PGSimulateButton"
+        android:id="@+id/PTSimulateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Simulate location close enough" />
