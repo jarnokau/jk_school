@@ -45,7 +45,6 @@ import static android.R.attr.data;
 public class MainActivity extends AppCompatActivity {
 
     private LocationListener locLis;
-    //static protected Location startLoc = null;
 
     public double latitude;
     public double longitude;
@@ -152,6 +151,23 @@ public class MainActivity extends AppCompatActivity {
                     .inflate(R.layout.static_fragment, container, false);
             return view;
         }
+    }
+
+    public static void setPuzzle(String puzzle,String Ansver, Context context) {
+
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Puzzle", puzzle);
+        editor.putString("Ansver", Ansver);
+        editor.commit();
+    }
+    public static String getPuzzle(Context context) {
+
+        SharedPreferences prefs = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        String Puzzle = prefs.getString("Puzzle", "nothing");
+        String Ansver = prefs.getString("Ansver", "nothing");
+        String PandA = Puzzle + "/" + Ansver;
+        return PandA;
     }
 
     public static void setRole(String value, Context context) {

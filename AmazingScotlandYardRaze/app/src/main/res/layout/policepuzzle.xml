@@ -62,6 +62,11 @@
         android:layout_height="wrap_content"
         android:text="Send Ansver" />
 
+    <Button
+        android:id="@+id/PGSimuPuzzlButton"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:text="Simulate puzzle arraival" />
 
     <ImageView
         android:id="@+id/PPimageView"

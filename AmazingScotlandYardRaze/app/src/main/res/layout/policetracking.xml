@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/PTtextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tracing time, go get the Bad guy  " />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="" />
+
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/PTLatiLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="your Latitude:" />
+        <TextView
+            android:id="@+id/PTLatiValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="" />
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/PTLongiLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="your Longitude:" />
+            <TextView
+                android:id="@+id/PTLongiValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="" />
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/PTDistanceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distance to robbers last location: " />
+            <TextView
+                android:id="@+id/PTDistanceValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+            <TextView
+                android:id="@+id/PTDistanceUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" meters" />
+        </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="" />
+
+     <Button
+        android:id="@+id/PGSendAnsverButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="update location and distance" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/PGSimulateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simulate location close enough" />
+
+</LinearLayout>
